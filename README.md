@@ -11,7 +11,7 @@
 
 ### Матрица кнопок
 Подключай выводы матрицы к плате ESP32-C3 строго по этой таблице:
-<img width="721" height="504" alt="image" src="https://github.com/user-attachments/assets/afcbe984-2d87-47fd-b757-354e45a82745" />
+<img width="693" height="491" alt="{8699CC5C-A808-4DBD-8E80-B5B1054C846A}" src="https://github.com/user-attachments/assets/8736d304-74c4-4af9-b6bc-fe1e77def242" />
 
 | Линия на схеме | Пин ESP32-C3 | Тип линии | Кнопки на этой линии |
 | :--- | :--- | :--- | :--- |
