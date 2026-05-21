@@ -273,30 +273,11 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h3 id="modalTitle" style="margin-top:0; color:var(--accent);">Настройка кнопки</h3>
 
-            <div class="form-group">
-                <label>Тип действия</label>
-                <select id="actionType" onchange="switchTypeForm()">
-                    <option value="1">Клавиатура (Клавиша/Макрос)</option>
-                    <option value="0">Мышь (Клик)</option>
-                </select>
-            </div>
-
             <div id="keyboardForm">
                 <div class="form-group">
                     <label>Привязанная клавиша</label>
                     <div class="input-listen" id="keyKeyfield" onclick="startKeyListen()">Кликни сюда и нажми клавишу
                     </div>
-                </div>
-            </div>
-
-            <div id="mouseForm" style="display:none;">
-                <div class="form-group">
-                    <label>Кнопка мыши</label>
-                    <select id="mouseBtnSelect">
-                        <option value="1">Левая (ЛКМ)</option>
-                        <option value="2">Правая (ПКМ)</option>
-                        <option value="3">Средняя (Колёсико)</option>
-                    </select>
                 </div>
             </div>
 
@@ -583,26 +564,17 @@
             isWaitingForInput = false;
             document.getElementById("modalTitle").innerText = `Настройка кнопки B${slot + 1}`;
             const bind = localBinds[slot];
-            if (bind && bind.active === 1) {
-                document.getElementById("actionType").value = bind.type;
-                if (bind.type === 1) {
-                    capturedKey = bind.key;
-                    capturedMod = bind.modifier;
-                    document.getElementById("keyKeyfield").innerText = `Код: ${bind.key} (Мод: ${bind.modifier})`;
-                } else {
-                    document.getElementById("mouseBtnSelect").value = bind.key;
-                }
+            if (bind && bind.active === 1 && bind.type === 1) {
+                capturedKey = bind.key;
+                capturedMod = bind.modifier;
+                document.getElementById("keyKeyfield").innerText = `Код: ${bind.key} (Мод: ${bind.modifier})`;
             } else {
-                document.getElementById("actionType").value = "1";
                 document.getElementById("keyKeyfield").innerText = "Кликни сюда и нажми клавишу";
-                document.getElementById("mouseBtnSelect").value = "1";
                 capturedKey = 0;
                 capturedMod = 0;
             }
-            switchTypeForm();
             document.getElementById("bindModal").style.display = "flex";
         }
-
         function closeModal() {
             document.getElementById("bindModal").style.display = "none";
             isWaitingForInput = false;
